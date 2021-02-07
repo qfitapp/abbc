@@ -1,4 +1,5 @@
 node('maven-label'){
+   
     def mvnHome
     stage('Preparation') { // for display purposes
       
@@ -7,7 +8,7 @@ node('maven-label'){
         mvnHome = tool 'maven-3.6.3'
     }
     stage('Build') {
-        // Run the maven build
+       
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
